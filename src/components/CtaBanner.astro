@@ -1,0 +1,84 @@
+---
+interface Props {
+  headline: string;
+  body?: string;
+  buttonText: string;
+  buttonUrl: string;
+  variant?: 'simple' | 'gradient' | 'with-subtext';
+}
+
+const {
+  headline,
+  body,
+  buttonText,
+  buttonUrl,
+  variant = 'simple'
+} = Astro.props;
+---
+
+{variant === 'simple' && (
+  <section class="py-20 md:py-28 px-6 bg-[--color-primary] relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-[--color-primary] via-[--color-primary] to-[#152C49] pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <h2 class="text-3xl md:text-4xl text-white mb-8">{headline}</h2>
+      <a
+        href={buttonUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center px-8 py-4 bg-[--color-cta] text-white font-semibold rounded-[--radius] hover:bg-[--color-cta-hover] transition-all duration-200 shadow-lg shadow-black/20 hover:shadow-xl hover:-translate-y-0.5"
+      >
+        {buttonText}
+        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+)}
+
+{variant === 'with-subtext' && (
+  <section class="py-20 md:py-28 px-6 bg-[--color-primary] relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[--color-accent]/[0.08] to-transparent pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <h2 class="text-3xl md:text-4xl text-white mb-4">{headline}</h2>
+      {body && (
+        <p class="text-lg text-white/70 mb-10 max-w-xl mx-auto">{body}</p>
+      )}
+      <a
+        href={buttonUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center px-8 py-4 bg-[--color-cta] text-white font-semibold rounded-[--radius] hover:bg-[--color-cta-hover] transition-all duration-200 shadow-lg shadow-black/20 hover:shadow-xl hover:-translate-y-0.5"
+      >
+        {buttonText}
+        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+)}
+
+{variant === 'gradient' && (
+  <section class="py-20 md:py-28 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[--color-primary] via-[#1E3A5F] to-[#0F2440]"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[--color-accent]/[0.1] via-transparent to-[--color-cta]/[0.08] pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <h2 class="text-3xl md:text-4xl text-white mb-4">{headline}</h2>
+      {body && (
+        <p class="text-lg text-white/70 mb-10 max-w-xl mx-auto">{body}</p>
+      )}
+      <a
+        href={buttonUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center px-8 py-4 bg-[--color-cta] text-white font-semibold rounded-[--radius] hover:bg-[--color-cta-hover] transition-all duration-200 shadow-lg shadow-black/20 hover:shadow-xl hover:-translate-y-0.5"
+      >
+        {buttonText}
+        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+)}

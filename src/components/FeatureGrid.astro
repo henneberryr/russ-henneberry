@@ -1,0 +1,105 @@
+---
+interface FeatureItem {
+  icon?: string;
+  title: string;
+  description: string;
+  number?: string;
+}
+
+interface Props {
+  headline?: string;
+  subheadline?: string;
+  items: FeatureItem[];
+  columns?: 2 | 3;
+  variant?: 'icon-grid' | 'numbered-steps';
+  background?: 'light' | 'dark';
+}
+
+const {
+  headline,
+  subheadline,
+  items,
+  columns = 3,
+  variant = 'icon-grid',
+  background = 'light'
+} = Astro.props;
+
+const bgClasses = background === 'dark'
+  ? 'bg-[--color-primary] text-white'
+  : 'bg-[--color-bg]';
+const headlineColor = background === 'dark' ? 'text-white' : 'text-[--color-text]';
+const subColor = background === 'dark' ? 'text-white/70' : 'text-[--color-secondary]';
+const cardBg = background === 'dark' ? 'bg-white/[0.08]' : 'bg-white';
+const cardBorder = background === 'dark' ? 'border-white/10' : 'border-[--color-border]';
+const titleColor = background === 'dark' ? 'text-white' : 'text-[--color-text]';
+const descColor = background === 'dark' ? 'text-white/70' : 'text-[--color-secondary]';
+const colClass = columns === 2 ? 'md:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols-3';
+---
+
+<section class={`py-24 md:py-32 px-6 ${bgClasses}`}>
+  <div class="max-w-6xl mx-auto">
+    {(headline || subheadline) && (
+      <div class="text-center mb-16">
+        {headline && (
+          <h2 class={`text-3xl md:text-4xl ${headlineColor} mb-4`}>
+            {headline}
+          </h2>
+        )}
+        {subheadline && (
+          <p class={`text-lg ${subColor} max-w-2xl mx-auto`}>
+            {subheadline}
+          </p>
+        )}
+      </div>
+    )}
+
+    {variant === 'icon-grid' && (
+      <div class={`grid grid-cols-1 ${colClass} gap-8`}>
+        {items.map((item, i) => (
+          <div class={`group ${cardBg} border ${cardBorder} rounded-[--radius] p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 animate-fade-in-up`} style={`animation-delay: ${i * 0.1}s`}>
+            {item.icon && (
+              <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[--color-accent]/10 text-[--color-accent] mb-5 text-2xl group-hover:scale-110 transition-transform duration-300">
+                <Fragment set:html={item.icon} />
+              </div>
+            )}
+            <h3 class={`text-xl ${titleColor} mb-3`}>
+              {item.title}
+            </h3>
+            <p class={`${descColor} leading-relaxed`}>
+              {item.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {variant === 'numbered-steps' && (
+      <div class={`grid grid-cols-1 ${colClass} gap-8`}>
+        {items.map((item, i) => (
+          <div class="relative animate-fade-in-up" style={`animation-delay: ${i * 0.1}s`}>
+            <div class={`${cardBg} border ${cardBorder} rounded-[--radius] p-8 h-full`}>
+              <div class="flex items-center gap-4 mb-4">
+                <span class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-[--color-primary] text-white text-sm font-bold">
+                  {item.number || String(i + 1)}
+                </span>
+                <h3 class={`text-xl ${titleColor}`}>
+                  {item.title}
+                </h3>
+              </div>
+              <p class={`${descColor} leading-relaxed pl-14`}>
+                {item.description}
+              </p>
+            </div>
+            {i < items.length - 1 && columns === 3 && (
+              <div class="hidden lg:block absolute top-1/2 -right-4 w-8 text-[--color-border]">
+                <svg class="w-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</section>

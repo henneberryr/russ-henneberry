@@ -1,0 +1,140 @@
+---
+interface Props {
+  headline: string;
+  subheadline?: string;
+  buttonText?: string;
+  buttonUrl?: string;
+  secondaryButtonText?: string;
+  secondaryButtonUrl?: string;
+  image?: string;
+  imageAlt?: string;
+  variant?: 'split' | 'centered' | 'minimal';
+}
+
+const {
+  headline,
+  subheadline,
+  buttonText,
+  buttonUrl,
+  secondaryButtonText,
+  secondaryButtonUrl,
+  image,
+  imageAlt = '',
+  variant = 'split'
+} = Astro.props;
+---
+
+{variant === 'split' && (
+  <section class="relative overflow-hidden bg-[--color-bg]">
+    <!-- Subtle geometric accent -->
+    <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[--color-primary]/[0.04] to-transparent pointer-events-none"></div>
+    <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-[--color-accent]/[0.06] rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32 lg:py-40">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Text -->
+        <div class="relative z-10">
+          <div class="animate-fade-in-up">
+            <p class="text-sm font-semibold tracking-widest uppercase text-[--color-accent] mb-6">
+              AI Marketing Consultant &bull; Trainer &bull; Speaker
+            </p>
+          </div>
+          <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.1] text-[--color-text] mb-6 animate-fade-in-up animation-delay-100">
+            {headline}
+          </h1>
+          {subheadline && (
+            <p class="text-lg md:text-xl text-[--color-secondary] leading-relaxed mb-10 max-w-lg animate-fade-in-up animation-delay-200">
+              {subheadline}
+            </p>
+          )}
+          <div class="flex flex-wrap gap-4 animate-fade-in-up animation-delay-300">
+            {buttonText && buttonUrl && (
+              <a
+                href={buttonUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center px-7 py-3.5 bg-[--color-cta] text-white font-semibold rounded-[--radius] hover:bg-[--color-cta-hover] transition-all duration-200 shadow-lg shadow-[--color-cta]/20 hover:shadow-xl hover:shadow-[--color-cta]/30 hover:-translate-y-0.5"
+              >
+                {buttonText}
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            )}
+            {secondaryButtonText && secondaryButtonUrl && (
+              <a
+                href={secondaryButtonUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center px-7 py-3.5 border-2 border-[--color-primary]/20 text-[--color-primary] font-semibold rounded-[--radius] hover:border-[--color-primary]/40 hover:bg-[--color-primary]/[0.04] transition-all duration-200"
+              >
+                {secondaryButtonText}
+              </a>
+            )}
+          </div>
+        </div>
+
+        <!-- Image -->
+        {image && (
+          <div class="relative flex justify-center lg:justify-end animate-fade-in-up animation-delay-200">
+            <div class="relative">
+              <!-- Background shape -->
+              <div class="absolute inset-0 bg-gradient-to-br from-[--color-primary]/10 to-[--color-accent]/10 rounded-2xl transform rotate-3 scale-105"></div>
+              <img
+                src={image}
+                alt={imageAlt}
+                class="relative w-full max-w-md lg:max-w-lg object-contain drop-shadow-2xl"
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+)}
+
+{variant === 'centered' && (
+  <section class="relative overflow-hidden bg-[--color-bg]">
+    <div class="absolute inset-0 bg-gradient-to-b from-[--color-primary]/[0.03] to-transparent pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-6 py-24 md:py-32 lg:py-40 text-center relative z-10">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-[--color-text] mb-6 animate-fade-in-up">
+        {headline}
+      </h1>
+      {subheadline && (
+        <p class="text-lg md:text-xl text-[--color-secondary] leading-relaxed mb-10 max-w-2xl mx-auto animate-fade-in-up animation-delay-100">
+          {subheadline}
+        </p>
+      )}
+      {buttonText && buttonUrl && (
+        <div class="animate-fade-in-up animation-delay-200">
+          <a
+            href={buttonUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-8 py-4 bg-[--color-cta] text-white font-semibold rounded-[--radius] hover:bg-[--color-cta-hover] transition-all duration-200 shadow-lg shadow-[--color-cta]/20 hover:shadow-xl hover:shadow-[--color-cta]/30 hover:-translate-y-0.5"
+          >
+            {buttonText}
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+{variant === 'minimal' && (
+  <section class="relative bg-[--color-bg]">
+    <div class="max-w-4xl mx-auto px-6 py-20 md:py-28">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-[--color-text] mb-6 animate-fade-in-up">
+        {headline}
+      </h1>
+      {subheadline && (
+        <p class="text-lg md:text-xl text-[--color-secondary] leading-relaxed max-w-2xl animate-fade-in-up animation-delay-100">
+          {subheadline}
+        </p>
+      )}
+    </div>
+  </section>
+)}

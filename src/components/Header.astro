@@ -1,0 +1,109 @@
+---
+interface Props {
+  logoText: string;
+  navLinks: { text: string; url: string }[];
+  ctaText?: string;
+  ctaUrl?: string;
+}
+
+const { logoText, navLinks, ctaText, ctaUrl } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 w-full z-50 bg-[--color-bg]/95 backdrop-blur-md border-b border-[--color-border]">
+  <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-18">
+    <!-- Logo -->
+    <a href="/" class="font-[--font-heading] text-2xl text-[--color-primary] tracking-tight hover:opacity-80 transition-opacity">
+      {logoText}
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-8">
+      {navLinks.map((link) => (
+        <a
+          href={link.url}
+          class:list={[
+            'text-sm font-medium tracking-wide uppercase transition-colors duration-200',
+            currentPath === link.url || (link.url !== '/' && currentPath.startsWith(link.url))
+              ? 'text-[--color-primary]'
+              : 'text-[--color-secondary] hover:text-[--color-primary]'
+          ]}
+        >
+          {link.text}
+        </a>
+      ))}
+      {ctaText && ctaUrl && (
+        <a
+          href={ctaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ml-2 inline-flex items-center px-5 py-2.5 bg-[--color-cta] text-white text-sm font-semibold rounded-[--radius] hover:bg-[--color-cta-hover] transition-colors duration-200 shadow-sm"
+        >
+          {ctaText}
+        </a>
+      )}
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden flex flex-col gap-1.5 p-2 -mr-2"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <span class="block w-6 h-0.5 bg-[--color-text] transition-all duration-300 origin-center" id="bar1"></span>
+      <span class="block w-6 h-0.5 bg-[--color-text] transition-all duration-300" id="bar2"></span>
+      <span class="block w-6 h-0.5 bg-[--color-text] transition-all duration-300 origin-center" id="bar3"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-[--color-bg] border-t border-[--color-border]">
+    <nav class="flex flex-col px-6 py-6 gap-4">
+      {navLinks.map((link) => (
+        <a
+          href={link.url}
+          class:list={[
+            'text-base font-medium py-1 transition-colors',
+            currentPath === link.url || (link.url !== '/' && currentPath.startsWith(link.url))
+              ? 'text-[--color-primary]'
+              : 'text-[--color-secondary] hover:text-[--color-primary]'
+          ]}
+        >
+          {link.text}
+        </a>
+      ))}
+      {ctaText && ctaUrl && (
+        <a
+          href={ctaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-2 inline-flex items-center justify-center px-5 py-3 bg-[--color-cta] text-white text-sm font-semibold rounded-[--radius] hover:bg-[--color-cta-hover] transition-colors"
+        >
+          {ctaText}
+        </a>
+      )}
+    </nav>
+  </div>
+</header>
+
+<!-- Spacer for fixed header -->
+<div class="h-18"></div>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const bar1 = document.getElementById('bar1');
+  const bar2 = document.getElementById('bar2');
+  const bar3 = document.getElementById('bar3');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', String(isOpen));
+    bar1?.classList.toggle('rotate-45', isOpen);
+    bar1?.classList.toggle('translate-y-[4px]', isOpen);
+    bar2?.classList.toggle('opacity-0', isOpen);
+    bar3?.classList.toggle('-rotate-45', isOpen);
+    bar3?.classList.toggle('-translate-y-[4px]', isOpen);
+  });
+</script>

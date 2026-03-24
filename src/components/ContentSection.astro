@@ -1,0 +1,65 @@
+---
+interface Props {
+  headline?: string;
+  body: string;
+  image?: string;
+  imageAlt?: string;
+  imagePosition?: 'left' | 'right';
+  background?: 'light' | 'dark' | 'subtle';
+}
+
+const {
+  headline,
+  body,
+  image,
+  imageAlt = '',
+  imagePosition = 'right',
+  background = 'light'
+} = Astro.props;
+
+const bgClasses = {
+  light: 'bg-[--color-bg]',
+  dark: 'bg-[--color-primary] text-white',
+  subtle: 'bg-white'
+}[background];
+
+const headlineColor = background === 'dark' ? 'text-white' : 'text-[--color-text]';
+const bodyColor = background === 'dark' ? 'text-white/80' : 'text-[--color-secondary]';
+---
+
+<section class={`py-24 md:py-32 px-6 ${bgClasses}`}>
+  <div class="max-w-6xl mx-auto">
+    {image ? (
+      <div class={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${imagePosition === 'left' ? 'lg:direction-rtl' : ''}`}>
+        <div class={imagePosition === 'left' ? 'lg:direction-ltr' : ''}>
+          {headline && (
+            <h2 class={`text-3xl md:text-4xl ${headlineColor} mb-6`}>
+              {headline}
+            </h2>
+          )}
+          <div class={`text-lg ${bodyColor} leading-relaxed space-y-4`} set:html={body} />
+        </div>
+        <div class={`relative ${imagePosition === 'left' ? 'lg:direction-ltr lg:order-first' : ''}`}>
+          <div class="relative overflow-hidden rounded-[--radius] shadow-2xl shadow-black/10">
+            <img
+              src={image}
+              alt={imageAlt}
+              class="w-full h-auto object-cover"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-[--radius]"></div>
+          </div>
+        </div>
+      </div>
+    ) : (
+      <div class="max-w-3xl mx-auto text-center">
+        {headline && (
+          <h2 class={`text-3xl md:text-4xl ${headlineColor} mb-6`}>
+            {headline}
+          </h2>
+        )}
+        <div class={`text-lg ${bodyColor} leading-relaxed space-y-4`} set:html={body} />
+      </div>
+    )}
+  </div>
+</section>

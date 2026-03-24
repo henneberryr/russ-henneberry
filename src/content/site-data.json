@@ -1,0 +1,19 @@
+{
+  "businessName": "Russ Henneberry",
+  "tagline": "AI Marketing Consultant, Trainer & Keynote Speaker",
+  "navigation": [
+    { "text": "Home", "url": "/" },
+    { "text": "About", "url": "/about" },
+    { "text": "Services", "url": "/services" }
+  ],
+  "headerCta": {
+    "text": "Schedule Call",
+    "url": "https://calendly.com/russhenneberry/custom-workshops"
+  },
+  "socialLinks": [
+    { "platform": "linkedin", "url": "https://www.linkedin.com/in/russhenneberry/" },
+    { "platform": "youtube", "url": "https://www.youtube.com/@jointheCLICK" }
+  ],
+  "contactEmail": "russ@modernpublisher.com",
+  "footerText": "Helping teams build AI marketing systems that actually work."
+}

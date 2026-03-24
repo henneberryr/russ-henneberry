@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties for component usage */
+:root {
+  --color-bg: #FAFAFA;
+  --color-text: #1A1A1A;
+  --color-primary: #1E3A5F;
+  --color-primary-hover: #152C49;
+  --color-secondary: #475569;
+  --color-accent: #D97706;
+  --color-cta: #EA580C;
+  --color-cta-hover: #DC4E06;
+  --color-muted: #71717a;
+  --color-card-bg: #f1f4f8;
+  --color-border: #d5dce6;
+  --font-heading: 'DM Serif Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius: 10px;
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-text);
+}
+
+/* Staggered reveal animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out both;
+}
+
+.animation-delay-100 { animation-delay: 0.1s; }
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-300 { animation-delay: 0.3s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+.animation-delay-500 { animation-delay: 0.5s; }
+.animation-delay-600 { animation-delay: 0.6s; }

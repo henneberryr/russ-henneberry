@@ -1,0 +1,40 @@
+---
+interface StatItem {
+  number: string;
+  label: string;
+}
+
+interface Props {
+  stats: StatItem[];
+  background?: 'light' | 'dark' | 'subtle';
+}
+
+const { stats, background = 'subtle' } = Astro.props;
+
+const bgClass = {
+  light: 'bg-[--color-bg]',
+  dark: 'bg-[--color-primary]',
+  subtle: 'bg-white'
+}[background];
+
+const numberColor = background === 'dark' ? 'text-[--color-accent]' : 'text-[--color-primary]';
+const labelColor = background === 'dark' ? 'text-white/70' : 'text-[--color-secondary]';
+const borderColor = background === 'dark' ? 'border-white/10' : 'border-[--color-border]';
+---
+
+<section class={`py-16 md:py-20 px-6 ${bgClass}`}>
+  <div class="max-w-6xl mx-auto">
+    <div class={`grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4`}>
+      {stats.map((stat, i) => (
+        <div class={`text-center ${i > 0 ? `md:border-l ${borderColor}` : ''} animate-fade-in-up`} style={`animation-delay: ${i * 0.1}s`}>
+          <div class={`text-3xl md:text-4xl font-bold ${numberColor} mb-2`} style="font-family: var(--font-heading)">
+            {stat.number}
+          </div>
+          <div class={`text-sm ${labelColor} tracking-wide`}>
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

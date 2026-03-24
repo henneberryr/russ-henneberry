@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ServicesShowcase from '../components/ServicesShowcase.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import Testimonial from '../components/Testimonial.astro';
+import Faq from '../components/Faq.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+---
+
+<BaseLayout
+  title="Services"
+  description="Keynote speaking, AI marketing workshops, and custom AI agent builds. Explore how Russ Henneberry helps teams adopt AI."
+>
+  <Hero
+    variant="centered"
+    headline="Bring AI Into Your Marketing Team the Right Way"
+    subheadline="Practical, hands-on approaches that stick. Whether you need a keynote to inspire, a workshop to activate, or a custom system built for your business."
+    buttonText="Schedule a Call"
+    buttonUrl="https://calendly.com/russhenneberry/custom-workshops"
+  />
+
+  <ServicesShowcase
+    items={[
+      {
+        title: "Keynote Speaking",
+        description: "Energizing, actionable presentations on AI marketing transformation for conferences, company events, and executive retreats. I don't do generic AI overviews. Every talk is built around what your audience actually needs to hear -- and what they can do about it starting the next day.",
+        details: [
+          "Audiences from 50 to 5,000+",
+          "Topics: AI adoption, marketing transformation, team readiness",
+          "In-person and virtual formats",
+          "Custom content for your industry and audience"
+        ],
+        image: "/images/russ-speaking-stage-01.jpg",
+        imageAlt: "Russ Henneberry delivering a keynote presentation",
+        buttonText: "Book Russ to Speak",
+        buttonUrl: "https://calendly.com/russhenneberry/custom-workshops"
+      },
+      {
+        title: "AI Workshops for Teams",
+        description: "Hands-on sessions where your team installs AI tools, configures them for your business, and builds real marketing workflows. Nobody leaves with just notes. They leave with working systems.",
+        details: [
+          "Full-day (6-8 hours) or half-day (3-4 hours) formats",
+          "Teams of 5-20 participants",
+          "AI Champion training included",
+          "30-day post-workshop support",
+          "In-person or remote delivery"
+        ],
+        price: "Starting at $5,000",
+        buttonText: "Schedule a Discovery Call",
+        buttonUrl: "https://calendly.com/russhenneberry/custom-workshops"
+      },
+      {
+        title: "Custom AI Agent Builds",
+        description: "A fully configured AI marketing agent built specifically for your business. Your offers, your audience, your brand voice, your workflows. Not a chatbot. A system that produces real marketing work from day one.",
+        details: [
+          "Custom offer and persona documentation",
+          "Brand voice configuration",
+          "3-5 production-ready marketing workflows",
+          "Tool integrations (email, social, CRM, etc.)",
+          "Team training session included",
+          "30-day post-delivery support"
+        ],
+        price: "Starting at $5,000",
+        image: "/images/russ-headshot-arms-crossed.jpg",
+        imageAlt: "Russ Henneberry",
+        buttonText: "Start a Conversation",
+        buttonUrl: "https://calendly.com/russhenneberry/custom-workshops"
+      }
+    ]}
+  />
+
+  <FeatureGrid
+    headline="How It Works"
+    subheadline="Every engagement follows a proven process designed to get your team productive with AI as fast as possible."
+    variant="numbered-steps"
+    columns={2}
+    items={[
+      {
+        title: "Discovery Call",
+        description: "A free 30-minute conversation to understand your team, your goals, and your current AI experience. We figure out if working together makes sense."
+      },
+      {
+        title: "Custom Plan",
+        description: "I design a tailored engagement based on your team's specific needs. Whether it's a keynote, workshop, agent build, or combination."
+      },
+      {
+        title: "Build & Train",
+        description: "Hands-on implementation with your team. We build real systems configured for your business. Your people learn by doing."
+      },
+      {
+        title: "Ongoing Support",
+        description: "Follow-up to make sure adoption sticks. AI Champion training ensures your team stays self-sufficient long after our engagement ends."
+      }
+    ]}
+    background="dark"
+  />
+
+  <Testimonial
+    variant="single"
+    quote="Russ taught us how to think for ourselves and build any AI solution we needed. In just two months, Russ completely transformed our marketing team."
+    author="Lauryn Snelson"
+    title="COO, Zipify"
+  />
+
+  <Faq
+    headline="Common Questions"
+    items={[
+      {
+        question: "What size team is this right for?",
+        answer: "Workshops work best with 5-20 participants, but I've worked with teams as small as 3 and as large as 200 (for keynotes). Custom agent builds work for any team size since the system scales with your organization."
+      },
+      {
+        question: "Do we need any AI experience?",
+        answer: "No. I work with teams ranging from complete AI beginners to experienced users who want to level up. The workshops and builds are designed to meet your team where they are."
+      },
+      {
+        question: "Can you work with us remotely?",
+        answer: "Yes. Workshops, agent builds, and training sessions all work in virtual formats. Keynotes are available both in-person and virtual. The only difference is that in-person workshops tend to have slightly higher energy."
+      },
+      {
+        question: "How long does a custom AI agent build take?",
+        answer: "Most builds take 2-3 weeks from kickoff to delivery. That includes the discovery phase, architecture, building, testing, and a training session for your team."
+      },
+      {
+        question: "What's the investment?",
+        answer: "Most engagements start at $5,000. The final investment depends on format, team size, and scope. The discovery call is free, and I'll give you a clear proposal before any commitment."
+      },
+      {
+        question: "What AI tools do you work with?",
+        answer: "I specialize in Claude and Claude Cowork from Anthropic, which I believe are the best AI tools available for marketing teams. However, the strategic thinking and frameworks I teach apply across any AI platform."
+      }
+    ]}
+  />
+
+  <CtaBanner
+    variant="gradient"
+    headline="Ready to Get Started?"
+    body="Book a free discovery call. No pitch, no pressure. Just a conversation about where you are and where you want to go."
+    buttonText="Schedule a Call"
+    buttonUrl="https://calendly.com/russhenneberry/custom-workshops"
+  />
+</BaseLayout>

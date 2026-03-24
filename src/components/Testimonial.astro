@@ -1,0 +1,87 @@
+---
+interface TestimonialItem {
+  quote: string;
+  author: string;
+  title?: string;
+  image?: string;
+}
+
+interface Props {
+  headline?: string;
+  quote?: string;
+  author?: string;
+  title?: string;
+  image?: string;
+  testimonials?: TestimonialItem[];
+  variant?: 'single' | 'grid';
+  background?: 'light' | 'subtle';
+}
+
+const {
+  headline,
+  quote,
+  author,
+  title,
+  image,
+  testimonials = [],
+  variant = 'grid',
+  background = 'subtle'
+} = Astro.props;
+
+const bgClass = background === 'subtle' ? 'bg-white' : 'bg-[--color-bg]';
+---
+
+<section class={`py-24 md:py-32 px-6 ${bgClass}`}>
+  <div class="max-w-6xl mx-auto">
+    {headline && (
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl text-[--color-text]">{headline}</h2>
+      </div>
+    )}
+
+    {variant === 'grid' && testimonials.length > 0 && (
+      <div class={`grid grid-cols-1 ${testimonials.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols-3'} gap-8`}>
+        {testimonials.map((t, i) => (
+          <div class="relative bg-[--color-bg] border border-[--color-border] rounded-[--radius] p-8 animate-fade-in-up" style={`animation-delay: ${i * 0.15}s`}>
+            <!-- Quote mark -->
+            <div class="absolute top-6 right-8 text-6xl font-serif text-[--color-primary]/[0.08] leading-none select-none">&ldquo;</div>
+            <p class="text-[--color-secondary] leading-relaxed mb-6 relative z-10">
+              &ldquo;{t.quote}&rdquo;
+            </p>
+            <div class="flex items-center gap-3">
+              {t.image && (
+                <img src={t.image} alt={t.author} class="w-10 h-10 rounded-full object-cover" loading="lazy" />
+              )}
+              <div>
+                <p class="font-semibold text-sm text-[--color-text]">{t.author}</p>
+                {t.title && (
+                  <p class="text-xs text-[--color-muted]">{t.title}</p>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {variant === 'single' && quote && (
+      <div class="max-w-3xl mx-auto text-center animate-fade-in-up">
+        <div class="text-7xl font-serif text-[--color-primary]/[0.12] leading-none select-none mb-4">&ldquo;</div>
+        <blockquote class="text-xl md:text-2xl text-[--color-text] leading-relaxed mb-8">
+          {quote}
+        </blockquote>
+        <div class="flex items-center justify-center gap-3">
+          {image && (
+            <img src={image} alt={author} class="w-12 h-12 rounded-full object-cover" loading="lazy" />
+          )}
+          <div class="text-left">
+            <p class="font-semibold text-[--color-text]">{author}</p>
+            {title && (
+              <p class="text-sm text-[--color-muted]">{title}</p>
+            )}
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+</section>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ContentSection from '../components/ContentSection.astro';
+import StatsBar from '../components/StatsBar.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+---
+
+<BaseLayout
+  title="About"
+  description="Learn about Russ Henneberry -- 20+ years in digital marketing, co-author of Digital Marketing for Dummies, and founder of theCLICK."
+>
+  <Hero
+    variant="minimal"
+    headline="An Educator Who Found Marketing, Then Found AI"
+    subheadline="The short version: I've spent my career figuring out how to grow businesses, then teaching other people how to do it. AI changed everything, and I was ready."
+  />
+
+  <ContentSection
+    headline="The Story"
+    body="<p>I started my career as an educator. I was trained to take complex ideas and make them stick. That skill turned out to be the foundation for everything that came after.</p><p>I spent the next two decades in digital marketing. SEO, content strategy, email, growth -- I did it all, eventually co-authoring Digital Marketing for Dummies, which became a global best-seller and put me in front of thousands of companies and marketing teams around the world.</p><p>Then AI agents arrived and changed the game completely. I saw what most people were missing: AI isn't a tool you bolt onto your existing workflow. It's a new way of working entirely. So I built the training programs, the systems, and the frameworks that help teams make that shift. I founded theCLICK to put it all in one place.</p><p>Today, I work with companies to build AI marketing systems their teams can actually use. Not theoretical. Not experimental. Production-ready systems that start working on day one.</p>"
+    image="/images/russ-portrait-smiling.jpeg"
+    imageAlt="Russ Henneberry"
+    imagePosition="right"
+    background="subtle"
+  />
+
+  <StatsBar
+    stats={[
+      { number: "20+", label: "Years in Digital Marketing" },
+      { number: "1,000+", label: "Teams Trained" },
+      { number: "#1", label: "Best-Selling Author" },
+      { number: "50+", label: "Keynotes Delivered" }
+    ]}
+  />
+
+  <ContentSection
+    headline="Implementation Over Theory"
+    body="<p>Here's what makes my approach different: I don't teach AI concepts. I build AI systems.</p><p>When I work with a team, we don't spend hours talking about what AI could do someday. We open the tools, configure them for that specific business, and build workflows that produce real marketing output before the session is over.</p><p>I also believe in building AI champions inside your organization -- not creating dependency on outside consultants. My goal is to get your team self-sufficient as fast as possible. I train 1-3 people on your team to become your internal AI experts who can train peers, troubleshoot issues, and keep the momentum going long after our engagement ends.</p>"
+    image="/images/russ-speaking-workshop.png"
+    imageAlt="Russ Henneberry leading an AI marketing workshop"
+    imagePosition="left"
+  />
+
+  <CtaBanner
+    variant="simple"
+    headline="Let's Build Something Together"
+    buttonText="Schedule a Call"
+    buttonUrl="https://calendly.com/russhenneberry/custom-workshops"
+  />
+</BaseLayout>
