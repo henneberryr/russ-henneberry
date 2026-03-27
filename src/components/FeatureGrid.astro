@@ -11,7 +11,7 @@ interface Props {
   subheadline?: string;
   items: FeatureItem[];
   columns?: 2 | 3;
-  variant?: 'icon-grid' | 'numbered-steps';
+  variant?: 'icon-grid' | 'numbered-steps' | 'numbered-editorial';
   background?: 'light' | 'dark';
 }
 
@@ -40,15 +40,23 @@ const colClass = columns === 2 ? 'md:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols
   <div class="max-w-6xl mx-auto">
     {(headline || subheadline) && (
       <div class="text-center mb-16">
+        {subheadline && variant === 'numbered-editorial' && (
+          <p class={`section-label mb-4`}>
+            {subheadline}
+          </p>
+        )}
         {headline && (
-          <h2 class={`text-3xl md:text-4xl ${headlineColor} mb-4`}>
+          <h2 class={`text-3xl md:text-[2.75rem] lg:text-[3rem] ${headlineColor} mb-4`}>
             {headline}
           </h2>
         )}
-        {subheadline && (
+        {subheadline && variant !== 'numbered-editorial' && (
           <p class={`text-lg ${subColor} max-w-2xl mx-auto`}>
             {subheadline}
           </p>
+        )}
+        {variant === 'numbered-editorial' && (
+          <div class="gold-rule gold-rule-sm mx-auto mt-6"></div>
         )}
       </div>
     )}
@@ -68,6 +76,30 @@ const colClass = columns === 2 ? 'md:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols
             <p class={`${descColor} leading-relaxed`}>
               {item.description}
             </p>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {variant === 'numbered-editorial' && (
+      <div class={`grid grid-cols-1 ${colClass} gap-8`}>
+        {items.map((item, i) => (
+          <div class={`group bg-white border border-[--color-border] rounded-[--radius] p-8 md:p-10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 animate-fade-in-up`} style={`animation-delay: ${i * 0.1}s`}>
+            <span class="block text-[3.5rem] leading-none mb-6 text-[--color-accent]/20 group-hover:text-[--color-accent]/60 transition-colors duration-300" style="font-family: var(--font-heading);">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <h3 class="text-xl md:text-2xl text-[--color-text] mb-3" style="font-family: var(--font-heading);">
+              {item.title}
+            </h3>
+            <p class="text-[--color-secondary] leading-relaxed mb-6">
+              {item.description}
+            </p>
+            <a href="/services" class="inline-flex items-center text-sm font-medium text-[--color-primary] hover:text-[--color-accent] transition-colors duration-200">
+              Learn more
+              <svg class="ml-1.5 w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
           </div>
         ))}
       </div>

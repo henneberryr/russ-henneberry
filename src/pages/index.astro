@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import CredentialsBar from '../components/CredentialsBar.astro';
+import ProblemStatement from '../components/ProblemStatement.astro';
 import FeatureGrid from '../components/FeatureGrid.astro';
-import ContentSection from '../components/ContentSection.astro';
+import StatsBar from '../components/StatsBar.astro';
 import Testimonial from '../components/Testimonial.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 ---
@@ -11,51 +13,71 @@ import CtaBanner from '../components/CtaBanner.astro';
   title="Home"
   description="Russ Henneberry is an AI Marketing Consultant, Trainer, and Keynote Speaker helping teams build AI marketing systems that actually work."
 >
+  <!-- 1. HERO -->
   <Hero
     variant="split"
     headline="I Help Teams Build AI Marketing Systems That Actually Work"
-    subheadline="20+ years in digital marketing. Co-author of Digital Marketing for Dummies. Now helping companies move from AI curiosity to AI execution through hands-on training, workshops, and custom-built AI agents."
+    subheadline="Co-author of Digital Marketing for Dummies. Helping companies move from AI curiosity to AI execution."
     buttonText="Schedule a Call"
     buttonUrl="https://calendly.com/russhenneberry/custom-workshops"
     secondaryButtonText="Watch Free Training"
     secondaryButtonUrl="https://www.youtube.com/@jointheCLICK"
-    image="/images/transparent-head-shots/russ-transparent-smiling-looking-right.png"
+    image="/images/russ-hero-nobg.png"
     imageAlt="Russ Henneberry"
   />
 
+  <!-- 2. CREDENTIALS BAR -->
+  <CredentialsBar
+    items={[
+      "Co-author of Digital Marketing for Dummies",
+      "1,000+ Teams Trained",
+      "Keynote Speaker at Kajabi, Smart Marketer & Traffic & Conversion"
+    ]}
+  />
+
+  <!-- 3. THE PROBLEM -->
+  <ProblemStatement
+    statement="Most teams have tried AI. They've played with chatbots, generated some blog posts, maybe automated a few tasks. But the gap between experimenting with AI and actually running your marketing on AI is massive."
+    body="<p>I've spent two decades in digital marketing and co-wrote the book on it. When AI agents arrived and changed everything, I built the systems and training programs that help teams make the leap from 'this is interesting' to 'this is how we work now.'</p>"
+    closer="That's the gap I close."
+  />
+
+  <!-- 4. SERVICES -->
   <FeatureGrid
-    headline="What I Do"
-    subheadline="Three ways I help organizations adopt AI and transform their marketing."
+    subheadline="What I Do"
+    headline="Three Ways We Work Together"
+    variant="numbered-editorial"
     items={[
       {
-        icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" /></svg>',
         title: "Keynote Speaking",
         description: "High-energy presentations on AI marketing transformation for conferences, summits, and company events. Audiences from 50 to 5,000+."
       },
       {
-        icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" /></svg>',
         title: "Team Workshops",
         description: "Hands-on sessions where your team builds real AI marketing workflows. They leave with working systems, not just inspiration."
       },
       {
-        icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" /></svg>',
         title: "Custom AI Agents",
         description: "Bespoke AI marketing systems built for your business. Configured with your offers, audience, voice, and workflows. Ready to produce on day one."
       }
     ]}
   />
 
-  <ContentSection
-    headline="From AI Curiosity to AI Execution"
-    body="<p>Most teams have tried AI. They've played with chatbots, generated some blog posts, maybe automated a few tasks. But the gap between experimenting with AI and actually running your marketing on AI is massive.</p><p>That's the gap I close. I've spent two decades in digital marketing and co-wrote the book on it. When AI agents arrived and changed everything, I built the systems and training programs that help teams make the leap from 'this is interesting' to 'this is how we work now.'</p><p>No hype. No theory. Just working systems your team can use starting Monday morning.</p>"
-    image="/images/russ-speaking-stage-02-kajabi.jpg"
-    imageAlt="Russ Henneberry speaking at the Kajabi conference"
-    background="subtle"
+  <!-- 5. STATS -->
+  <StatsBar
+    background="dark"
+    stats={[
+      { number: "20+", label: "Years in Digital Marketing" },
+      { number: "1,000+", label: "Teams Trained" },
+      { number: "#1", label: "Best-Selling Author" },
+      { number: "50+", label: "Keynotes Delivered" }
+    ]}
   />
 
+  <!-- 6. TESTIMONIALS -->
   <Testimonial
-    headline="What People Are Saying"
-    variant="grid"
+    variant="featured-plus-grid"
+    background="light"
     testimonials={[
       {
         quote: "Russ taught us how to think for ourselves and build any AI solution we needed. In just two months, Russ completely transformed our marketing team.",
@@ -75,11 +97,14 @@ import CtaBanner from '../components/CtaBanner.astro';
     ]}
   />
 
+  <!-- 7. FINAL CTA -->
   <CtaBanner
-    variant="with-subtext"
-    headline="Ready to Bring AI Into Your Marketing?"
-    body="Book a free discovery call. We'll talk about your team, your goals, and whether working together makes sense."
+    variant="architect"
+    label="Next Step"
+    headline="Let's Build Your AI Marketing System"
+    body="Book a free discovery call. 30 minutes. No pitch. Just clarity."
     buttonText="Schedule a Call"
     buttonUrl="https://calendly.com/russhenneberry/custom-workshops"
+    subButtonText="Free 30-minute consultation"
   />
 </BaseLayout>

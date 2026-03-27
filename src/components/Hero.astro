@@ -25,70 +25,64 @@ const {
 ---
 
 {variant === 'split' && (
-  <section class="relative overflow-hidden bg-[--color-bg]">
-    <!-- Subtle geometric accent -->
-    <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[--color-primary]/[0.04] to-transparent pointer-events-none"></div>
-    <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-[--color-accent]/[0.06] rounded-full blur-3xl pointer-events-none"></div>
-
-    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32 lg:py-40">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <!-- Text -->
-        <div class="relative z-10">
-          <div class="animate-fade-in-up">
-            <p class="text-sm font-semibold tracking-widest uppercase text-[--color-accent] mb-6">
-              AI Marketing Consultant &bull; Trainer &bull; Speaker
-            </p>
-          </div>
-          <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.1] text-[--color-text] mb-6 animate-fade-in-up animation-delay-100">
-            {headline}
-          </h1>
-          {subheadline && (
-            <p class="text-lg md:text-xl text-[--color-secondary] leading-relaxed mb-10 max-w-lg animate-fade-in-up animation-delay-200">
-              {subheadline}
-            </p>
-          )}
-          <div class="flex flex-wrap gap-4 animate-fade-in-up animation-delay-300">
-            {buttonText && buttonUrl && (
-              <a
-                href={buttonUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center px-7 py-3.5 bg-[--color-cta] text-white font-semibold rounded-[--radius] hover:bg-[--color-cta-hover] transition-all duration-200 shadow-lg shadow-[--color-cta]/20 hover:shadow-xl hover:shadow-[--color-cta]/30 hover:-translate-y-0.5"
-              >
-                {buttonText}
-                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-            )}
-            {secondaryButtonText && secondaryButtonUrl && (
-              <a
-                href={secondaryButtonUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center px-7 py-3.5 border-2 border-[--color-primary]/20 text-[--color-primary] font-semibold rounded-[--radius] hover:border-[--color-primary]/40 hover:bg-[--color-primary]/[0.04] transition-all duration-200"
-              >
-                {secondaryButtonText}
-              </a>
-            )}
-          </div>
+  <section class="relative overflow-hidden bg-[#F5F0EB]">
+    <div class="max-w-6xl mx-auto px-6 lg:px-12 relative min-h-[92vh]">
+      <!-- Text - positioned on left -->
+      <div class="relative z-10 pt-28 md:pt-36 lg:pt-44 pb-20 md:pb-28 lg:pb-32 lg:max-w-[50%]">
+        <div class="animate-fade-in-up">
+          <div class="gold-rule gold-rule-sm mb-6"></div>
+          <p class="section-label mb-6">AI Marketing Consultant</p>
         </div>
-
-        <!-- Image -->
-        {image && (
-          <div class="relative flex justify-center lg:justify-end animate-fade-in-up animation-delay-200">
-            <div class="relative">
-              <!-- Background shape -->
-              <div class="absolute inset-0 bg-gradient-to-br from-[--color-primary]/10 to-[--color-accent]/10 rounded-2xl transform rotate-3 scale-105"></div>
-              <img
-                src={image}
-                alt={imageAlt}
-                class="relative w-full max-w-md lg:max-w-lg object-contain drop-shadow-2xl"
-              />
-            </div>
-          </div>
+        <h1 class="text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] leading-[1.05] tracking-tight text-[--color-text] mb-8 animate-fade-in-up animation-delay-100">
+          {headline}
+        </h1>
+        {subheadline && (
+          <p class="text-base md:text-lg text-[--color-secondary] leading-relaxed mb-10 max-w-md animate-fade-in-up animation-delay-200">
+            {subheadline}
+          </p>
         )}
+        <div class="flex flex-wrap items-center gap-5 animate-fade-in-up animation-delay-300">
+          {buttonText && buttonUrl && (
+            <a
+              href={buttonUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center px-8 py-4 bg-[--color-primary] text-white font-semibold rounded-[--radius] hover:bg-[--color-primary-hover] transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+            >
+              {buttonText}
+              <svg class="ml-3 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          )}
+          {secondaryButtonText && secondaryButtonUrl && (
+            <a
+              href={secondaryButtonUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-3 text-[--color-text] font-semibold hover:opacity-70 transition-opacity duration-200"
+            >
+              <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-md">
+                <svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+              {secondaryButtonText}
+            </a>
+          )}
+        </div>
       </div>
+
+      <!-- Image - absolute positioned, filling right side -->
+      {image && (
+        <div class="hidden lg:block absolute bottom-0 right-0 w-[60%] h-full animate-fade-in-up animation-delay-200">
+          <img
+            src={image}
+            alt={imageAlt}
+            class="absolute bottom-0 left-[15%] h-[78%] w-auto max-w-none object-contain object-bottom"
+          />
+        </div>
+      )}
     </div>
   </section>
 )}

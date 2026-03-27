@@ -17,20 +17,23 @@ const bgClass = {
   subtle: 'bg-white'
 }[background];
 
-const numberColor = background === 'dark' ? 'text-[--color-accent]' : 'text-[--color-primary]';
-const labelColor = background === 'dark' ? 'text-white/70' : 'text-[--color-secondary]';
-const borderColor = background === 'dark' ? 'border-white/10' : 'border-[--color-border]';
+const numberColor = background === 'dark' ? 'text-white' : 'text-[--color-primary]';
+const labelColor = background === 'dark' ? 'text-white/50' : 'text-[--color-secondary]';
+const dividerColor = background === 'dark' ? 'bg-[--color-accent]/30' : 'bg-[--color-border]';
 ---
 
-<section class={`py-16 md:py-20 px-6 ${bgClass}`}>
+<section class={`py-20 md:py-24 lg:py-28 px-6 ${bgClass}`}>
   <div class="max-w-6xl mx-auto">
-    <div class={`grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4`}>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-0">
       {stats.map((stat, i) => (
-        <div class={`text-center ${i > 0 ? `md:border-l ${borderColor}` : ''} animate-fade-in-up`} style={`animation-delay: ${i * 0.1}s`}>
-          <div class={`text-3xl md:text-4xl font-bold ${numberColor} mb-2`} style="font-family: var(--font-heading)">
+        <div class="relative text-center animate-fade-in-up" style={`animation-delay: ${i * 0.1}s`}>
+          {i > 0 && (
+            <div class={`hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-px h-16 ${dividerColor}`}></div>
+          )}
+          <div class={`text-5xl lg:text-[5rem] leading-none ${numberColor} mb-3`} style="font-family: var(--font-heading);">
             {stat.number}
           </div>
-          <div class={`text-sm ${labelColor} tracking-wide`}>
+          <div class={`text-xs ${labelColor} uppercase tracking-[0.15em] font-medium`}>
             {stat.label}
           </div>
         </div>

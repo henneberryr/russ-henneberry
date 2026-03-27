@@ -4,7 +4,9 @@ interface Props {
   body?: string;
   buttonText: string;
   buttonUrl: string;
-  variant?: 'simple' | 'gradient' | 'with-subtext';
+  label?: string;
+  subButtonText?: string;
+  variant?: 'simple' | 'gradient' | 'with-subtext' | 'architect';
 }
 
 const {
@@ -12,6 +14,8 @@ const {
   body,
   buttonText,
   buttonUrl,
+  label,
+  subButtonText,
   variant = 'simple'
 } = Astro.props;
 ---
@@ -79,6 +83,40 @@ const {
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
         </svg>
       </a>
+    </div>
+  </section>
+)}
+
+{variant === 'architect' && (
+  <section class="relative overflow-hidden">
+    <div class="absolute top-0 left-0 right-0 h-px bg-[--color-accent] opacity-15"></div>
+    <div class="bg-[--color-primary] relative">
+      <div class="absolute inset-0 bg-gradient-to-r from-[--color-accent]/[0.05] to-transparent pointer-events-none"></div>
+      <div class="max-w-4xl mx-auto text-center relative z-10 py-28 md:py-36 px-6">
+        {label && (
+          <p class="text-xs font-medium uppercase tracking-[0.2em] text-[--color-accent] mb-6 animate-fade-in-up">{label}</p>
+        )}
+        <h2 class="text-3xl md:text-[2.75rem] text-white mb-5 animate-fade-in-up animation-delay-100">{headline}</h2>
+        {body && (
+          <p class="text-lg text-white/60 mb-12 max-w-xl mx-auto animate-fade-in-up animation-delay-200">{body}</p>
+        )}
+        <div class="animate-fade-in-up animation-delay-300">
+          <a
+            href={buttonUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-10 py-4.5 bg-[--color-cta] text-white font-semibold rounded-[--radius] hover:bg-[--color-cta-hover] transition-all duration-200 shadow-lg shadow-black/20 hover:shadow-xl hover:-translate-y-0.5 text-lg"
+          >
+            {buttonText}
+            <svg class="ml-3 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+        {subButtonText && (
+          <p class="text-sm text-white/35 mt-5 animate-fade-in-up animation-delay-400">{subButtonText}</p>
+        )}
+      </div>
     </div>
   </section>
 )}

@@ -4,17 +4,18 @@
 
 /* CSS Custom Properties for component usage */
 :root {
-  --color-bg: #FAFAFA;
+  --color-bg: #F8F5F0;
+  --color-bg-warm: #F5F0EB;
   --color-text: #1A1A1A;
   --color-primary: #1E3A5F;
   --color-primary-hover: #152C49;
   --color-secondary: #475569;
-  --color-accent: #D97706;
+  --color-accent: #C27D2B;
   --color-cta: #EA580C;
   --color-cta-hover: #DC4E06;
   --color-muted: #71717a;
-  --color-card-bg: #f1f4f8;
-  --color-border: #d5dce6;
+  --color-card-bg: #FFFFFF;
+  --color-border: #E8E2DA;
   --font-heading: 'DM Serif Display', serif;
   --font-body: 'DM Sans', sans-serif;
   --radius: 10px;
@@ -41,6 +42,28 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text);
 }
 
+/* Section label utility */
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+}
+
+/* Gold rule utility */
+.gold-rule {
+  height: 2px;
+  background-color: var(--color-accent);
+  opacity: 0.3;
+  border: none;
+}
+
+.gold-rule-sm { width: 40px; }
+.gold-rule-md { width: 60px; }
+.gold-rule-lg { width: 80px; }
+
 /* Staggered reveal animation */
 @keyframes fadeInUp {
   from {
@@ -53,8 +76,17 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .animate-fade-in-up {
-  animation: fadeInUp 0.7s ease-out both;
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out both;
 }
 
 .animation-delay-100 { animation-delay: 0.1s; }

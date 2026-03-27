@@ -44,6 +44,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <body class="flex flex-col min-h-screen">
     <Header
       logoText={siteData.businessName}
+      logoImage="/images/logo-modern-sans.png"
       navLinks={siteData.navigation}
       ctaText={siteData.headerCta.text}
       ctaUrl={siteData.headerCta.url}

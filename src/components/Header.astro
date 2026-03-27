@@ -1,20 +1,25 @@
 ---
 interface Props {
   logoText: string;
+  logoImage?: string;
   navLinks: { text: string; url: string }[];
   ctaText?: string;
   ctaUrl?: string;
 }
 
-const { logoText, navLinks, ctaText, ctaUrl } = Astro.props;
+const { logoText, logoImage, navLinks, ctaText, ctaUrl } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
 <header class="fixed top-0 w-full z-50 bg-[--color-bg]/95 backdrop-blur-md border-b border-[--color-border]">
   <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-18">
     <!-- Logo -->
-    <a href="/" class="font-[--font-heading] text-2xl text-[--color-primary] tracking-tight hover:opacity-80 transition-opacity">
-      {logoText}
+    <a href="/" class="hover:opacity-80 transition-opacity">
+      {logoImage ? (
+        <img src={logoImage} alt={logoText} class="h-8 md:h-9 w-auto object-contain" />
+      ) : (
+        <span class="font-[--font-heading] text-2xl text-[--color-primary] tracking-tight">{logoText}</span>
+      )}
     </a>
 
     <!-- Desktop Nav -->
