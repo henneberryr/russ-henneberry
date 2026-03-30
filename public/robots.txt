@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://russhenneberry.com/sitemap.xml
+Sitemap: https://russhenneberry.com/sitemap-index.xml
