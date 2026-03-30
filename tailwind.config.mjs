@@ -4,20 +4,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        'bg': '#FAFAFA',
-        'text': '#1A1A1A',
+        'bg': '#F8FAFC',
+        'text': '#1E3A5F',
         'primary': '#1E3A5F',
         'primary-hover': '#152C49',
-        'secondary': '#475569',
-        'accent': '#D97706',
-        'cta': '#EA580C',
-        'cta-hover': '#DC4E06',
-        'muted': '#71717a',
-        'card-bg': '#f1f4f8',
-        'border': '#d5dce6',
+        'secondary': '#94A3B8',
+        'accent': '#2563EB',
+        'cta': '#2563EB',
+        'cta-hover': '#1D4ED8',
+        'muted': '#94A3B8',
+        'card-bg': '#FFFFFF',
+        'border': '#E2E8F0',
       },
       fontFamily: {
-        heading: ["'DM Serif Display'", 'serif'],
+        heading: ["'Plus Jakarta Sans'", 'sans-serif'],
         body: ["'DM Sans'", 'sans-serif'],
       },
       borderRadius: {

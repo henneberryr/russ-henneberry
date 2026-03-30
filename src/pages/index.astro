@@ -7,6 +7,9 @@ import FeatureGrid from '../components/FeatureGrid.astro';
 import StatsBar from '../components/StatsBar.astro';
 import Testimonial from '../components/Testimonial.astro';
 import CtaBanner from '../components/CtaBanner.astro';
+import testimonials from '../content/testimonials.json';
+import stats from '../content/stats.json';
+import credentials from '../content/credentials.json';
 ---
 
 <BaseLayout
@@ -27,13 +30,7 @@ import CtaBanner from '../components/CtaBanner.astro';
   />
 
   <!-- 2. CREDENTIALS BAR -->
-  <CredentialsBar
-    items={[
-      "Co-author of Digital Marketing for Dummies",
-      "1,000+ Teams Trained",
-      "Keynote Speaker at Kajabi, Smart Marketer & Traffic & Conversion"
-    ]}
-  />
+  <CredentialsBar items={credentials} />
 
   <!-- 3. THE PROBLEM -->
   <ProblemStatement
@@ -64,37 +61,13 @@ import CtaBanner from '../components/CtaBanner.astro';
   />
 
   <!-- 5. STATS -->
-  <StatsBar
-    background="dark"
-    stats={[
-      { number: "20+", label: "Years in Digital Marketing" },
-      { number: "1,000+", label: "Teams Trained" },
-      { number: "#1", label: "Best-Selling Author" },
-      { number: "50+", label: "Keynotes Delivered" }
-    ]}
-  />
+  <StatsBar background="dark" stats={stats} />
 
   <!-- 6. TESTIMONIALS -->
   <Testimonial
     variant="featured-plus-grid"
     background="light"
-    testimonials={[
-      {
-        quote: "Russ taught us how to think for ourselves and build any AI solution we needed. In just two months, Russ completely transformed our marketing team.",
-        author: "Lauryn Snelson",
-        title: "COO, Zipify"
-      },
-      {
-        quote: "Russ is always on the cutting edge, first doing the work, then teaching it in a way that actually clicks. He's become one of the most trusted voices I know.",
-        author: "Molly Pittman",
-        title: "CEO, Smart Marketer"
-      },
-      {
-        quote: "This program helped our team build a practical AI system we could actually use day-to-day. The results were immediate.",
-        author: "Anney Perrine",
-        title: "SVP of Growth, PALM Health"
-      }
-    ]}
+    testimonials={testimonials}
   />
 
   <!-- 7. FINAL CTA -->

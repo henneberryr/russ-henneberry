@@ -12,11 +12,11 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="fixed top-0 w-full z-50 bg-[--color-bg]/95 backdrop-blur-md border-b border-[--color-border]">
-  <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-18">
+  <div class="max-w-6xl mx-auto px-6 flex items-center justify-between py-[20px]">
     <!-- Logo -->
     <a href="/" class="hover:opacity-80 transition-opacity">
       {logoImage ? (
-        <img src={logoImage} alt={logoText} class="h-8 md:h-9 w-auto object-contain" />
+        <img src={logoImage} alt={logoText} class="h-[27px] md:h-[31px] w-auto object-contain" />
       ) : (
         <span class="font-[--font-heading] text-2xl text-[--color-primary] tracking-tight">{logoText}</span>
       )}
@@ -93,7 +93,7 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <!-- Spacer for fixed header -->
-<div class="h-18"></div>
+<div class="h-[80px]"></div>
 
 <script>
   const btn = document.getElementById('mobile-menu-btn');

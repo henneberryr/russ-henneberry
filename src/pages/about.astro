@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import ContentSection from '../components/ContentSection.astro';
 import StatsBar from '../components/StatsBar.astro';
 import CtaBanner from '../components/CtaBanner.astro';
+import stats from '../content/stats.json';
 ---
 
 <BaseLayout
@@ -25,14 +26,7 @@ import CtaBanner from '../components/CtaBanner.astro';
     background="subtle"
   />
 
-  <StatsBar
-    stats={[
-      { number: "20+", label: "Years in Digital Marketing" },
-      { number: "1,000+", label: "Teams Trained" },
-      { number: "#1", label: "Best-Selling Author" },
-      { number: "50+", label: "Keynotes Delivered" }
-    ]}
-  />
+  <StatsBar stats={stats} />
 
   <ContentSection
     headline="Implementation Over Theory"

@@ -80,11 +80,16 @@ const bgClass = background === 'subtle' ? 'bg-white' : 'bg-[--color-bg]';
           <blockquote class="text-xl md:text-2xl lg:text-[1.5rem] leading-relaxed text-[--color-text] mb-8" style="font-family: var(--font-heading); font-style: italic;">
             {testimonials[0].quote}
           </blockquote>
-          <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.1em] text-[--color-text]">{testimonials[0].author}</p>
-            {testimonials[0].title && (
-              <p class="text-sm text-[--color-muted] mt-1">{testimonials[0].title}</p>
+          <div class="flex items-center justify-center gap-3">
+            {testimonials[0].image && (
+              <img src={testimonials[0].image} alt={testimonials[0].author} class="w-12 h-12 rounded-full object-cover" loading="lazy" />
             )}
+            <div class="text-left">
+              <p class="text-sm font-semibold uppercase tracking-[0.1em] text-[--color-text]">{testimonials[0].author}</p>
+              {testimonials[0].title && (
+                <p class="text-sm text-[--color-muted] mt-1">{testimonials[0].title}</p>
+              )}
+            </div>
           </div>
         </div>
 
@@ -99,11 +104,16 @@ const bgClass = background === 'subtle' ? 'bg-white' : 'bg-[--color-bg]';
                 <p class="text-[--color-secondary] leading-relaxed mb-6">
                   &ldquo;{t.quote}&rdquo;
                 </p>
-                <div>
-                  <p class="font-semibold text-sm text-[--color-text]">{t.author}</p>
-                  {t.title && (
-                    <p class="text-xs text-[--color-muted] mt-0.5">{t.title}</p>
+                <div class="flex items-center gap-3">
+                  {t.image && (
+                    <img src={t.image} alt={t.author} class="w-10 h-10 rounded-full object-cover" loading="lazy" />
                   )}
+                  <div>
+                    <p class="font-semibold text-sm text-[--color-text]">{t.author}</p>
+                    {t.title && (
+                      <p class="text-xs text-[--color-muted] mt-0.5">{t.title}</p>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}

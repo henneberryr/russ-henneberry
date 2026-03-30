@@ -6,6 +6,7 @@ import FeatureGrid from '../components/FeatureGrid.astro';
 import Testimonial from '../components/Testimonial.astro';
 import Faq from '../components/Faq.astro';
 import CtaBanner from '../components/CtaBanner.astro';
+import testimonials from '../content/testimonials.json';
 ---
 
 <BaseLayout
@@ -98,9 +99,10 @@ import CtaBanner from '../components/CtaBanner.astro';
 
   <Testimonial
     variant="single"
-    quote="Russ taught us how to think for ourselves and build any AI solution we needed. In just two months, Russ completely transformed our marketing team."
-    author="Lauryn Snelson"
-    title="COO, Zipify"
+    quote={testimonials[0].quote}
+    author={testimonials[0].author}
+    title={testimonials[0].title}
+    image={testimonials[0].image}
   />
 
   <Faq
