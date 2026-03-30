@@ -8,9 +8,34 @@ import stats from '../content/stats.json';
 ---
 
 <BaseLayout
-  title="About"
-  description="Learn about Russ Henneberry -- 20+ years in digital marketing, co-author of Digital Marketing for Dummies, and founder of theCLICK."
+  title="About Russ Henneberry"
+  description="20+ years in digital marketing. Co-author of Digital Marketing for Dummies. Now helping teams build AI marketing systems that actually work."
 >
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Russ Henneberry",
+      "jobTitle": "AI Marketing Consultant",
+      "description": "Digital marketing consultant, co-author of Digital Marketing for Dummies, and AI marketing systems builder. 20+ years helping teams grow.",
+      "url": "https://russhenneberry.com/about",
+      "image": "https://russhenneberry.com/images/russ-portrait-smiling.jpeg",
+      "worksFor": { "@type": "Organization", "name": "theCLICK", "url": "https://theclick.ai" },
+      "knowsAbout": ["AI Marketing", "Digital Marketing", "Keynote Speaking", "Marketing Workshops"],
+      "sameAs": [
+        "https://www.linkedin.com/in/russhenneberry/",
+        "https://www.youtube.com/@jointheCLICK"
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://russhenneberry.com/" },
+        { "@type": "ListItem", "position": 2, "name": "About", "item": "https://russhenneberry.com/about" }
+      ]
+    })} />
+  </Fragment>
   <Hero
     variant="minimal"
     headline="An Educator Who Found Marketing, Then Found AI"

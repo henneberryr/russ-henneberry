@@ -13,9 +13,37 @@ import credentials from '../content/credentials.json';
 ---
 
 <BaseLayout
-  title="Home"
-  description="Russ Henneberry is an AI Marketing Consultant, Trainer, and Keynote Speaker helping teams build AI marketing systems that actually work."
+  title="AI Marketing Consultant, Trainer and Keynote Speaker"
+  description="Russ Henneberry helps marketing teams build AI systems that actually work. Keynotes, workshops, and custom AI agents. Book a free discovery call."
 >
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Russ Henneberry",
+      "url": "https://russhenneberry.com",
+      "description": "AI Marketing Consultant, Trainer, and Keynote Speaker helping teams build AI marketing systems that actually work.",
+      "logo": "https://russhenneberry.com/images/logo-modern-sans.png",
+      "founder": { "@type": "Person", "name": "Russ Henneberry" },
+      "sameAs": [
+        "https://www.linkedin.com/in/russhenneberry/",
+        "https://www.youtube.com/@jointheCLICK"
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Russ Henneberry",
+      "url": "https://russhenneberry.com"
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://russhenneberry.com/" }
+      ]
+    })} />
+  </Fragment>
   <!-- 1. HERO -->
   <Hero
     variant="split"

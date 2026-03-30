@@ -10,9 +10,65 @@ import testimonials from '../content/testimonials.json';
 ---
 
 <BaseLayout
-  title="Services"
-  description="Keynote speaking, AI marketing workshops, and custom AI agent builds. Explore how Russ Henneberry helps teams adopt AI."
+  title="AI Keynotes, Workshops and Custom Agent Builds"
+  description="Keynote speaking, hands-on AI workshops for teams of 5-20, and custom AI agent builds starting at $5,000. Book a free discovery call."
 >
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "AI Marketing Services",
+      "provider": {
+        "@type": "Person",
+        "name": "Russ Henneberry",
+        "url": "https://russhenneberry.com"
+      },
+      "description": "Keynote speaking, AI marketing workshops, and custom AI agent builds for teams.",
+      "url": "https://russhenneberry.com/services",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Keynote Speaking", "description": "High-energy presentations on AI marketing transformation for conferences, summits, and company events. Audiences from 50 to 5,000+." }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "AI Workshops for Teams", "description": "Hands-on sessions where your team builds real AI marketing workflows. Teams of 5-20 participants." },
+            "price": "5000",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Custom AI Agent Builds", "description": "Bespoke AI marketing systems built for your business, configured with your offers, audience, voice, and workflows." },
+            "price": "5000",
+            "priceCurrency": "USD"
+          }
+        ]
+      }
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What size team is this right for?", "acceptedAnswer": { "@type": "Answer", "text": "Workshops work best with 5-20 participants, but I've worked with teams as small as 3 and as large as 200 (for keynotes). Custom agent builds work for any team size since the system scales with your organization." }},
+        { "@type": "Question", "name": "Do we need any AI experience?", "acceptedAnswer": { "@type": "Answer", "text": "No. I work with teams ranging from complete AI beginners to experienced users who want to level up. The workshops and builds are designed to meet your team where they are." }},
+        { "@type": "Question", "name": "Can you work with us remotely?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Workshops, agent builds, and training sessions all work in virtual formats. Keynotes are available both in-person and virtual." }},
+        { "@type": "Question", "name": "How long does a custom AI agent build take?", "acceptedAnswer": { "@type": "Answer", "text": "Most builds take 2-3 weeks from kickoff to delivery. That includes the discovery phase, architecture, building, testing, and a training session for your team." }},
+        { "@type": "Question", "name": "What's the investment?", "acceptedAnswer": { "@type": "Answer", "text": "Most engagements start at $5,000. The final investment depends on format, team size, and scope. The discovery call is free, and I'll give you a clear proposal before any commitment." }},
+        { "@type": "Question", "name": "What AI tools do you work with?", "acceptedAnswer": { "@type": "Answer", "text": "I specialize in Claude and Claude Cowork from Anthropic, which I believe are the best AI tools available for marketing teams. However, the strategic thinking and frameworks I teach apply across any AI platform." }}
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://russhenneberry.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://russhenneberry.com/services" }
+      ]
+    })} />
+  </Fragment>
   <Hero
     variant="centered"
     headline="Bring AI Into Your Marketing Team the Right Way"
